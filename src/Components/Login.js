@@ -4,8 +4,8 @@ import Header from "./Header";
 function Login() {
   const [isSignInForm, setisSignInForm] = useState(true);
   const toggleSignInForm = () => {
-   setisSignInForm(!isSignInForm);
-  }
+    setisSignInForm(!isSignInForm);
+  };
   return (
     <div>
       <Header />
@@ -19,6 +19,13 @@ function Login() {
         <h1 className="font-bold text-3xl py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
+        {!isSignInForm && (
+          <input
+            type="text"
+            placeholder="Full Name"
+            className="p-4 my-4 w-full bg-gray-700"
+          />
+        )}
         <input
           type="text"
           placeholder="Email Address"
@@ -29,10 +36,14 @@ function Login() {
           placeholder="password"
           className="p-4 my-4 w-full bg-gray-700"
         />
-        <button className="p-4 my-6 bg-red-700 w-full rounded-lg">
+        <button className="p-4 my-6 bg-red-700 w-full rounded-lg cursor-pointer">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
-        <p onClick={toggleSignInForm}>{isSignInForm ? "New to Netflix ? Sign Up Now":"Already registered ? SignIn Now"}</p>
+        <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>
+          {isSignInForm
+            ? "New to Netflix ? Sign Up Now"
+            : "Already registered ? SignIn Now"}
+        </p>
       </form>
     </div>
   );
